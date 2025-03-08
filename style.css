@@ -1,0 +1,627 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+:root {
+    --primary-color: #6366f1;
+    --text-color: #0f172a;
+    --bg-color: #ffffff;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-border: rgba(231, 231, 231, 0.8);
+    --nav-height: 70px;
+    --nav-shadow: 0 5px 20px -5px rgba(99, 102, 241, 0.1);
+    --button-bg: #4F46E5
+    --button-hover: rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="dark"] {
+    --primary-color: #475569;
+    --text-color: #f1f5f9;
+    --bg-color: #0f172a;
+    --nav-bg: rgba(15, 23, 42, 0.8);
+    --nav-border: rgba(51, 65, 85, 0.8);
+    --nav-shadow: 0 5px 20px -5px rgba(129, 140, 248, 0.15);
+    --button-bg: rgba(129, 140, 248, 0.1);
+    --button-hover: rgba(129, 140, 248, 0.15);
+}
+
+
+
+
+
+body {
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.premium-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
+    height: var(--nav-height);
+    box-shadow: var(--nav-shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 2rem;
+    gap: 2rem;
+}
+
+.nav-logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    overflow: visible;
+    transition: all 0.3s ease;
+}
+
+
+.nav-logo:hover {
+    transform: translateY(-2px);
+}
+
+.nav-logo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        var(--primary-color) 0%, 
+        #d946ef 50%,
+        var(--primary-color) 100%
+    );
+    border-radius: 12px;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-logo::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--nav-bg);
+    border-radius: 11px;
+    z-index: -1;
+}
+
+.nav-logo:hover::before {
+    opacity: 0.15;
+}
+
+.logo-shine {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: -100%;
+    bottom: -100%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%) rotate(45deg);
+    animation: none;
+    pointer-events: none;
+}
+
+.nav-logo:hover .logo-shine {
+    animation: shineLogo 1s ease forwards;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    background: var(--button-bg);
+    color: var(--primary-color);
+}
+
+.nav-link.active {
+    background: var(--button-bg);
+    color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+
+/* navbar btn */
+
+/* style.css */
+.button-container {
+    display: flex; /* To place buttons side-by-side */
+    gap: 10px; /* Optional gap between buttons */
+    justify-content: center; /* Center buttons horizontally on the page */
+    align-items: center; /* Center buttons vertically if needed */
+    min-height: 100vh; /* To center vertically in the viewport (optional) */
+}
+
+.btn {
+    display: inline-block; /* To make them behave like inline elements but allow width/height */
+    padding: 12px 24px; /* Adjust padding for button size */
+    border-radius: 50px; /* Creates the pill shape */
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none; /* Remove default link underline if you use <a> instead of <button> */
+    cursor: pointer;
+    border: none; /* Remove default button border */
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-signup {
+    background-color: #ffffff; /* White background */
+    color: var(--text-color);
+    border: 1px solid #CBD5E1; 
+}
+
+.btn-login {
+    background-color: #4F46E5; 
+    color: #ffffff; /* White text color */
+}
+
+/* Hover effect - Optional, but nice to have */
+.btn-signup:hover,
+.btn-login:hover {
+    opacity: 0.9; /* Slightly reduce opacity on hover */
+}
+
+/* Optional:  You can add focus styles for accessibility too */
+.btn:focus {
+    outline: 2px solid #3f51b5; /* Example focus outline color */
+    outline-offset: 2px; /* To separate outline from button border */
+}
+
+
+/* Hero Section Styles */
+.hero {
+    background: linear-gradient(to bottom, #f8f9fa, #8C92EF); /* Light gradient background - adjust colors as needed */
+    padding: 100px 20px; /* Adjust padding for top/bottom and sides */
+    text-align: center;
+    color: #343a40; /* Dark text color - adjust if needed */
+}
+
+.hero-content {
+    max-width: 960px; /* Limit content width for larger screens */
+    margin: 0 auto; /* Center the content */
+}
+
+.hero h1 {
+    font-size: 60px; /* Large title font size - adjust as needed */
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 68px; /* Improve line spacing for title */
+    color: #1E293B;
+}
+
+.hero p {
+    font-size: 1.1rem; /* Paragraph font size - adjust as needed */
+    line-height: 1.7;
+    color: #6c757d; /* Slightly lighter text for paragraph */
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    gap: 20px; /* Spacing between buttons */
+}
+
+
+.hero-image {
+    max-width: 100%; /* Make image responsive and not exceed container width */
+    height: auto; /* Maintain image aspect ratio */
+    display: block; /* Remove potential bottom spacing below image */
+    margin: 0 auto; /* Center the image horizontally if needed */
+    border-radius: 10px; /* Optional: Add slight rounded corners to the image */
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); Optional:  */
+}
+
+.hero-top-btn{
+    display: inline-block; /* To make them behave like inline elements but allow width/height */
+    color: #4F46E5;
+    background-color: #EEF2FF;
+    padding: 12px 24px; /* Adjust padding for button size */
+    border-radius: 50px; /* Creates the pill shape */
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none; /* Remove default link underline if you use <a> instead of <button> */
+    cursor: pointer;
+    border: none; /* Remove default button border */
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+
+/* Company Logos Section Styles */
+.company-logos-section {
+    padding: 60px 20px; /* Adjust padding as needed */
+    background-color: #f8f9fa; /* Light gray background - adjust if needed */
+    text-align: center; /* Center the container if needed */
+}
+
+.company-logos-container {
+    max-width: 1200px; /* Adjust max width as needed for your layout */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex; /* Use flexbox for horizontal layout of logos */
+    flex-wrap: wrap; /* Allow logos to wrap to the next line on smaller screens */
+    justify-content: center; /* Center logos horizontally within the container */
+    align-items: center; /* Vertically align logos in each row */
+    gap: 30px 40px; /* Row and column gap between logos */
+}
+
+.company-logos-container img {
+    height: 96px; /* Adjust logo height as needed */
+    width: 144px; /* Maintain aspect ratio */
+    opacity: 0.7; /* Slightly reduce opacity - adjust as needed */
+    transition: opacity 0.3s ease; /* Smooth hover effect */
+}
+
+.company-logos-container img:hover {
+    opacity: 1; /* Full opacity on hover */
+}
+
+
+
+/* Features Section Styles */
+.features-section {
+    padding: 80px 20px; /* Adjust padding as needed */
+    background-color: #f8f9fa; /* Light gray background - adjust if needed */
+    text-align: center; /* Center section content */
+}
+
+.features-container {
+    max-width: 1200px; /* Adjust max-width for your layout */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Section Header Styles */
+.section-header {
+    margin-bottom: 60px; /* Spacing between header and grid */
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #475569; /* Subtitle color - adjust as needed */
+    text-transform: uppercase; /* Optional: Uppercase subtitle */
+    letter-spacing: 0.1em; /* Optional: Letter spacing for subtitle */
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 36px; /* Main title size - adjust as needed */
+    font-weight: bold;
+    color: #1E293B; /* Main title color - adjust as needed */
+    margin-bottom: 20px;
+    line-height: 1.2; /* Improve title line height */
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #666; /* Description text color - adjust as needed */
+    line-height: 1.7;
+    max-width: 800px; /* Limit description width for readability */
+    margin: 0 auto; /* Center description text */
+}
+
+
+
+/* Features Grid Styles */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 30px; /* Gap between feature items */
+}
+
+.feature-item {
+    padding: 30px;
+
+    border-radius: 15px; /* Rounded corners for feature boxes */
+
+    text-align: center; /* Center content within feature item */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.feature-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow on hover */
+}
+
+.feature-icon {
+    width: 80px; /* Icon size - adjust as needed */
+    height: 80px;
+    margin-bottom: 20px;
+    display: block; /* Make icon a block element for centering */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-title {
+    font-size: 20px; /* Feature title size - adjust as needed */
+    font-weight: bold;
+    color: #1E293B; /* Feature title color - adjust as needed */
+    margin-bottom: 15px;
+}
+
+.feature-description {
+    font-size: 16px; /* Feature description size - adjust as needed */
+    color: #475569; /* Feature description color - adjust as needed */
+    line-height: 1.6;
+}
+/* 
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--button-bg);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+.moon-icon {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(20px);
+} */
+
+[data-theme="dark"] .sun-icon {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+[data-theme="dark"] .moon-icon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu {
+    display: none !important;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--button-bg);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.mobile-menu:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shineLogo {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(200%) rotate(45deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        border-bottom: 1px solid var(--nav-border);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+        top: var(--nav-height);
+        gap: 0.5rem;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--nav-shadow);
+    }
+    .nav-btn{
+        display: none;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu {
+        display: flex !important;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        justify-content: flex-start;
+        gap: 0.75rem;
+    }
+
+    .nav-link.active {
+        background: var(--button-bg);
+        transform: none;
+        box-shadow: none;
+    }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-direction: row;
+    }
+
+    .hero h1 {
+        font-size: 36px; /* Large title font size - adjust as needed */
+        font-weight: 800;
+        margin-bottom: 20px;
+        line-height: 44px; /* Improve line spacing for title */
+        color: #1E293B;
+    }
+    .company-logos-container img {
+        height: 96px; /* Adjust logo height as needed */
+        width: 64px; /* Maintain aspect ratio */
+        opacity: 0.7; /* Slightly reduce opacity - adjust as needed */
+        transition: opacity 0.3s ease; /* Smooth hover effect */
+    }
+    .company-logos-container {
+        max-width: 800px; /* Adjust max width as needed for your layout */
+        margin: 0 auto; /* Center the container horizontally */
+        display: flex; /* Use flexbox for horizontal layout of logos */
+        flex-wrap: wrap; /* Allow logos to wrap to the next line on smaller screens */
+        justify-content: center; /* Center logos horizontally within the container */
+        align-items: center; /* Vertically align logos in each row */
+        gap: 20px 20px; /* Row and column gap between logos */
+    }
+    .company-logos-section {
+        padding: 10px 10px; /* Adjust padding as needed */
+        background-color: #f8f9fa; /* Light gray background - adjust if needed */
+        text-align: center; /* Center the container if needed */
+    }
+    .section-title {
+        font-size: 30px; /* Main title size - adjust as needed */
+        font-weight: bold;
+        color: #1E293B; /* Main title color - adjust as needed */
+        margin-bottom: 20px;
+        line-height: 1.2; /* Improve title line height */
+    }
+    .section-subtitle {
+        font-size: 18px;
+        color: #475569; /* Subtitle color - adjust as needed */
+        text-transform: uppercase; /* Optional: Uppercase subtitle */
+        letter-spacing: 0.1em; /* Optional: Letter spacing for subtitle */
+        margin-bottom: 10px;
+    }
+    .feature-icon {
+        width: 44px; /* Icon size - adjust as needed */
+        height: 60px;
+        margin-bottom: 20px;
+        display: block; /* Make icon a block element for centering */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .feature-title {
+        font-size: 18px; /* Feature title size - adjust as needed */
+        font-weight: bold;
+        color: #1E293B; /* Feature title color - adjust as needed */
+        margin-bottom: 15px;
+    }
+    
+    .feature-description {
+        font-size: 16px; /* Feature description size - adjust as needed */
+        color: #475569; /* Feature description color - adjust as needed */
+        line-height: 1.6;
+    }
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+        gap: 5px; /* Gap between feature items */
+    }
+}
+
+@keyframes navItemFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
